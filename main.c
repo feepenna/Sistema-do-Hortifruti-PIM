@@ -12,7 +12,7 @@ int main() {
         printf("v. vegetais \n");
         printf("r. verduras \n");
         printf("l. legumes \n");
-        printf("e. saida \n");
+        printf("s. saida \n");
         scanf(" %c", &calculo);
 
         switch (calculo){
@@ -31,7 +31,7 @@ int main() {
             scanf("%lf", &peso);
             preco = umquilole * peso;
             break;
-        case 'e':
+        case 's':
             //printf("Sair \n");
             break;
         default:
