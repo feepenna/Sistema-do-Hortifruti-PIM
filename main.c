@@ -6,6 +6,7 @@ int main() {
     double umquilovt = 5.0, umquilovr = 4.0, umquilole = 3.0, peso;
     char calculo;
     double preco;
+    //char addprod;
 
     do{
         printf("Qual produto deseja escanear?\n");
@@ -14,6 +15,7 @@ int main() {
         printf("l. legumes \n");
         printf("s. saida \n");
         scanf(" %c", &calculo);
+       // scanf("%c", &addprod);
 
         switch (calculo){
         case 'v':
@@ -40,6 +42,8 @@ int main() {
         }
 
         printf("O preço total é: %.2f\n", preco);
+        printf("Deseja adicionar mais produtos? \n");
+
 
     }while (calculo != 'e');
     printf("Fim da execução\n");
