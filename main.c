@@ -21,7 +21,8 @@ int main() {
         {"Uva", 0.070},     
         {"Morango", 0.120},   
         {"Abacaxi", 0.050},   
-        {"Banana", 0.040}    
+        {"Banana", 0.040},
+        {"Tomate", 0,065}    
     };
 
     
@@ -92,5 +93,3 @@ int main() {
     printf("Fim da execução\n");
     return 0;
 }
-
-
