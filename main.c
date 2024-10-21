@@ -55,6 +55,8 @@ int main() {
 
     float peso, preco;
     char calculo;
+    double precototal = 0.0;
+    double contprod = 0;
 
     do {
         printf("Qual produto deseja escanear?\n");
@@ -63,7 +65,7 @@ int main() {
         printf("l. Legumes\n");
         printf("f. Frutas\n");
         printf("p. Produtos\n");
-        printf("Deseja escanear mais produtos?");
+        printf("c. Fechar conta\n");
         printf("s. Saida\n");
         scanf(" %c", &calculo);
 
@@ -81,6 +83,8 @@ int main() {
                     scanf("%f", &peso);
                     preco = vegetais[veg_choice-1].precoGerais * peso;
                     printf("Preco: %.2f reais\n", preco);
+                    precototal += preco;
+                    contprod++;
                 } else {
                     printf("Vegetal invalido\n");
                 }
@@ -99,6 +103,8 @@ int main() {
                     scanf("%f", &peso);
                     preco = verduras[verd_choice-1].precoGerais * peso;
                     printf("Preco: %.2f reais\n", preco);
+                    precototal += preco;
+                    contprod++;
                 } else {
                     printf("Verdura invalida\n");
                 }
@@ -117,6 +123,8 @@ int main() {
                     scanf("%f", &peso);
                     preco = legumes[legume_choice-1].precoGerais * peso;
                     printf("Preco: %.2f reais\n", preco);
+                    precototal += preco;
+                    contprod++;
                 } else {
                     printf("Legume invalido\n");
                 }
@@ -135,6 +143,8 @@ int main() {
                     scanf("%f", &peso);
                     preco = frutas[fruta_choice-1].precoGerais * peso;
                     printf("Preco: %.2f reais\n", preco);
+                    precototal += preco;
+                    contprod++;
                 } else {
                     printf("Fruta invalida\n");
                 }
@@ -153,15 +163,25 @@ int main() {
                     scanf("%f", &peso);
                     preco = prodgen[prodgen_choice-1].precoGerais * peso;
                     printf("Preço: %.2f reais\n", preco);
+                    precototal += preco;
+                    contprod++;
                 } else {
                     printf("Produto invalido\n");
                 }
                 break;
             }
-            case 's':
+            case 'c':{
+                printf("Fechar conta\n");
+                scanf("%c", &calculo);
+            }
+            case 's':{
                 printf("Saindo...\n");
+                if (contprod > 0){
+                    printf("Preco Total: %.2f reais\n", precototal);
+                }
+                
                 break;
-
+            }
             default:
                 printf("Operação invalida\n");
                 break;
