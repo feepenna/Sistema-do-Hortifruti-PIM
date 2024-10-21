@@ -39,16 +39,32 @@ int main() {
         {"Banana", 0.40}    
     };
 
+    struct Produto prodgen[10] = {
+        {"Refrigerante 2L", 10.00},
+        {"Salgadinho", 9.90},
+        {"Cerveja", 3.99},
+        {"Balas", 7.50},
+        {"Detergente", 2.50},
+        {"Chocolate", 3.59},
+        {"Veja", 5.19},
+        {"Oleo", 7.18},
+        {"Nescau", 15.00},
+        {"Milho de Pipoca", 14.10}
+    };
+    
+
     float peso, preco;
     char calculo;
 
     do {
         printf("Qual produto deseja escanear?\n");
-        printf("v. vegetais\n");
-        printf("r. verduras\n");
-        printf("l. legumes\n");
-        printf("f. frutas\n");
-        printf("s. saída\n");
+        printf("v. Vegetais\n");
+        printf("r. Verduras\n");
+        printf("l. Legumes\n");
+        printf("f. Frutas\n");
+        printf("p. Produtos\n");
+        printf("Deseja escanear mais produtos?");
+        printf("s. Saida\n");
         scanf(" %c", &calculo);
 
         switch (calculo) {
@@ -64,9 +80,9 @@ int main() {
                     printf("Digite o peso do produto (%s): ", vegetais[veg_choice-1].nome);
                     scanf("%f", &peso);
                     preco = vegetais[veg_choice-1].precoGerais * peso;
-                    printf("Preço: %.2f reais\n", preco);
+                    printf("Preco: %.2f reais\n", preco);
                 } else {
-                    printf("Vegetal inválido\n");
+                    printf("Vegetal invalido\n");
                 }
                 break;
             }
@@ -82,9 +98,9 @@ int main() {
                     printf("Digite o peso do produto (%s): ", verduras[verd_choice-1].nome);
                     scanf("%f", &peso);
                     preco = verduras[verd_choice-1].precoGerais * peso;
-                    printf("Preço: %.2f reais\n", preco);
+                    printf("Preco: %.2f reais\n", preco);
                 } else {
-                    printf("Verdura inválida\n");
+                    printf("Verdura invalida\n");
                 }
                 break;
             }
@@ -100,9 +116,9 @@ int main() {
                     printf("Digite o peso do produto (%s): ", legumes[legume_choice-1].nome);
                     scanf("%f", &peso);
                     preco = legumes[legume_choice-1].precoGerais * peso;
-                    printf("Preço: %.2f reais\n", preco);
+                    printf("Preco: %.2f reais\n", preco);
                 } else {
-                    printf("Legume inválido\n");
+                    printf("Legume invalido\n");
                 }
                 break;
             }
@@ -118,9 +134,27 @@ int main() {
                     printf("Digite o peso do produto (%s): ", frutas[fruta_choice-1].nome);
                     scanf("%f", &peso);
                     preco = frutas[fruta_choice-1].precoGerais * peso;
+                    printf("Preco: %.2f reais\n", preco);
+                } else {
+                    printf("Fruta invalida\n");
+                }
+                break;
+            }
+            case 'p': {
+                printf("Escolha o produto:\n");
+                for (int i = 0; i < 5; i++) {
+                    printf("%d. %s\n", i+1, prodgen[i].nome);
+                }
+                int prodgen_choice;
+                scanf("%d", &prodgen_choice);
+
+                if (prodgen_choice >= 1 && prodgen_choice <= 5) {
+                    printf("Digite o peso do produto (%s): ", prodgen[prodgen_choice-1].nome);
+                    scanf("%f", &peso);
+                    preco = prodgen[prodgen_choice-1].precoGerais * peso;
                     printf("Preço: %.2f reais\n", preco);
                 } else {
-                    printf("Fruta inválida\n");
+                    printf("Produto invalido\n");
                 }
                 break;
             }
@@ -129,11 +163,11 @@ int main() {
                 break;
 
             default:
-                printf("Operação inválida\n");
+                printf("Operação invalida\n");
                 break;
         }
     } while (calculo != 's');
 
-    printf("Fim da execução\n");
+    printf("Fim da execucao\n");
     return 0;
 }
