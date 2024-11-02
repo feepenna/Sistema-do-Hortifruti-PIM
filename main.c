@@ -47,7 +47,7 @@
             {"Balas", 7.50},
             {"Detergente", 2.50},
             {"Chocolate", 3.59},
-            {"Veja", 5.19},
+            {"Limpadpr Multiuso", 5.19},
             {"Oleo", 7.18},
             {"Nescau", 15.00},
             {"Milho de Pipoca", 14.10}
