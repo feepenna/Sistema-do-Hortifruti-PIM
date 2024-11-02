@@ -3,6 +3,7 @@
     #include <stdlib.h>
     #include <string.h>
     #include <time.h>
+    #include <unistd.h>
     #define LIMPA_BUFFER fflush(stdin); //macro de limpeza pro buffer de teclado
 
     struct endereco{
@@ -63,6 +64,16 @@ void cadastraCliente(Cadastro *pC, int i){
 	LIMPA_BUFFER
 	scanf("%29[^\n]", pC[i].ender.cidade);
 }
+
+int adicionarMaisClientes() {
+    char resposta;
+    
+    printf("Deseja adicionar mais clientes? (S/N): ");
+    LIMPA_BUFFER
+    scanf("%c", &resposta);
+    
+    return (resposta == 'S' || resposta == 's');
+}
     
 
     struct Produto {
@@ -93,6 +104,10 @@ void cadastraCliente(Cadastro *pC, int i){
 			case '1':					
 				for(i=0; i<3; i++){		//Laço de coleta de dados
 					cadastraCliente(c, i);
+
+					if (!adicionarMaisClientes()) {
+						break;
+					}
 				}
 				gravaArquivo(c, 3);
 				puts("Cadastro realizado com sucesso.");
