@@ -2,14 +2,149 @@
     #include <locale.h>
     #include <stdlib.h>
     #include <string.h>
+    #include <time.h>
+    #define LIMPA_BUFFER fflush(stdin); //macro de limpeza pro buffer de teclado
+
+    struct endereco{
+        char rua[50];
+        int numero;
+        char cidade[30];
+    };
+
+    typedef struct cadastro{
+	char nome[50];
+	int idade;
+	struct endereco ender;			//Declara variável ender do tipo endereco
+} Cadastro;							//tipo "struct cadastro" será chamado apenas de "Cadastro"
+
+void gravaArquivo(Cadastro *pC, int n){ 			//pC aponta para vetor c, n recebe o número de clientes
+	FILE *arq; 										//Declara ponteiro para manipular arquivo
+	arq = fopen("clientes.txt", "wb");				//abre arquivo clientes.txt em modo escrita binária
+	if(arq == NULL){								//Testa se arquivo foi aberto corretamente
+		puts("Erro na abertura do arquivo");
+		exit(1);
+	}
+	int bls_gravados;  								//Variável p/ coletar retorno de fwrite, que deve coincidir com o valor de n
+	bls_gravados = fwrite(pC, sizeof(Cadastro), n, arq);
+	if(bls_gravados != n){
+		puts("Erro na escrita do arquivo");
+	}
+	fclose(arq);
+}
+
+void leArquivo(Cadastro *pC, int n){
+	FILE *arq;
+	arq = fopen("clientes.txt", "rb"); 				//abre arquivo clientes.txt em modo leitura binária
+	if(arq == NULL){
+		puts("Erro na abertura do arquivo");		//Haverá erro caso o arquino clientes.txt não exista no diretório do código-fonte
+		exit(1);
+	}
+	int bls_lidos;									//Variável p/ coletar retorno de fread, que deve coincidir com o valor de n
+	bls_lidos = fread(pC, sizeof(Cadastro), n, arq);
+	if(bls_lidos != n){
+		puts("Erro na leitura do arquivo");
+	}
+	fclose(arq);
+}
+
+void cadastraCliente(Cadastro *pC, int i){
+	printf("Nome do cliente %d: ", i);
+	LIMPA_BUFFER
+	scanf("%49[^\n]", pC[i].nome);
+	printf("Idade do cliente %d: ", i);
+	scanf("%d", &pC[i].idade);
+	printf("Endereço do cliente %d\n", i);
+	printf("Rua: ");
+	LIMPA_BUFFER
+	scanf("%49[^\n]", pC[i].ender.rua);
+	printf("Número: ");
+	scanf("%d", &pC[i].ender.numero);
+	printf("Cidade: ");
+	LIMPA_BUFFER
+	scanf("%29[^\n]", pC[i].ender.cidade);
+}
+    
 
     struct Produto {
         char nome[30];
         float precoGerais;
     };
 
-    int main() {
+    int main(){
         setlocale(LC_ALL, "Portuguese");
+        Cadastro c[3];	//Cria o cadastro c (cliente), de 3 posições
+	int i=0;
+	char op;
+	
+	do{
+		system("cls");
+		puts("Escolha uma opção: ");
+		puts("1. Cadastrar clientes");
+		puts("2. Consultar dados de cliente");
+		puts("3. Alterar cadastro");
+		puts("4. Exibir clientes cadastrados");
+		puts("5. Sair");
+		LIMPA_BUFFER
+		scanf("%c", &op);
+		
+		switch(op){
+			
+			//Cadastrar clientes "do zero"
+			case '1':					
+				for(i=0; i<3; i++){		//Laço de coleta de dados
+					cadastraCliente(c, i);
+				}
+				gravaArquivo(c, 3);
+				puts("Cadastro realizado com sucesso.");
+				break;
+			
+			//Consultar dados de cliente específico
+			case '2':					
+				do{
+					printf("Consultar dados do cliente [0, 1 ou 2]: ");
+					scanf("%d", &i);
+				} while (i<0 || i>2);
+				leArquivo(c, 3);
+				printf("Nome: %s \nIdade: %d \n", c[i].nome, c[i].idade);
+				printf("Endereço: Rua %s, %d, %s.\n", c[i].ender.rua, c[i].ender.numero, c[i].ender.cidade);
+				system("pause");
+				break;
+			
+			//Alterar dados de cliente específico
+			case '3':					
+				do{
+					printf("Alterar dados do cliente [0, 1 ou 2]: ");
+					scanf("%d", &i);
+				} while (i<0 || i>2);
+				leArquivo(c, 3);
+				cadastraCliente(c, i);
+				gravaArquivo(c, 3);
+				puts("Alteração realizada com sucesso.");
+				system("pause");
+				break;			
+
+			//Exibir clientes cadastrados
+			case '4':					
+				printf("Clientes cadastrados \n\n");
+				leArquivo(c, 3);
+				for(i=0; i<3; i++){
+					printf("Cliente %d: \n", i);
+					printf("Nome: %s \nIdade: %d \n", c[i].nome, c[i].idade);
+					printf("Endereço: Rua %s, %d, %s.\n\n", c[i].ender.rua, c[i].ender.numero, c[i].ender.cidade);
+				}
+				system("pause");
+				break;			
+
+			default:
+				if(op!='5'){
+					puts("Opção inválida");
+					sleep(1);
+				}	
+				
+		}
+		
+		
+	} while(op!='5');
 
         // Definindo os produtos
         struct Produto vegetais[5] = {
