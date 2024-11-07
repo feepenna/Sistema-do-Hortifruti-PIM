@@ -15,8 +15,8 @@
     typedef struct cadastro{
 	char nome[50];
 	int idade;
-	struct endereco ender;			//Declara variável ender do tipo endereco
-} Cadastro;							//tipo "struct cadastro" será chamado apenas de "Cadastro"
+	struct endereco ender;			
+} Cadastro;							
 
 void gravaArquivo(Cadastro *pC, int n){ 			//pC aponta para vetor c, n recebe o número de clientes
 	FILE *arq; 										//Declara ponteiro para manipular arquivo
