@@ -243,7 +243,7 @@ int adicionarMaisClientes() {
                     scanf("%d", &veg_choice);
 
                     if (veg_choice >= 1 && veg_choice <= 5) {
-                        printf("Digite o peso do produto (%s): ", vegetais[veg_choice-1].nome);
+                        printf("Digite o peso ou a unidade do produto (%s): ", vegetais[veg_choice-1].nome);
                         scanf("%f", &peso);
                         preco = vegetais[veg_choice-1].precoGerais * peso;
                         printf("Preco: %.2f reais\n", preco);
@@ -263,7 +263,7 @@ int adicionarMaisClientes() {
                     scanf("%d", &verd_choice);
 
                     if (verd_choice >= 1 && verd_choice <= 3) {
-                        printf("Digite o peso do produto (%s): ", verduras[verd_choice-1].nome);
+                        printf("Digite o peso ou a unidade do produto (%s): ", verduras[verd_choice-1].nome);
                         scanf("%f", &peso);
                         preco = verduras[verd_choice-1].precoGerais * peso;
                         printf("Preco: %.2f reais\n", preco);
@@ -283,7 +283,7 @@ int adicionarMaisClientes() {
                     scanf("%d", &legume_choice);
 
                     if (legume_choice >= 1 && legume_choice <= 4) {
-                        printf("Digite o peso do produto (%s): ", legumes[legume_choice-1].nome);
+                        printf("Digite o peso ou a unidade do produto (%s): ", legumes[legume_choice-1].nome);
                         scanf("%f", &peso);
                         preco = legumes[legume_choice-1].precoGerais * peso;
                         printf("Preco: %.2f reais\n", preco);
@@ -303,7 +303,7 @@ int adicionarMaisClientes() {
                     scanf("%d", &fruta_choice);
 
                     if (fruta_choice >= 1 && fruta_choice <= 5) {
-                        printf("Digite o peso do produto (%s): ", frutas[fruta_choice-1].nome);
+                        printf("Digite o peso ou a unidade do produto (%s): ", frutas[fruta_choice-1].nome);
                         scanf("%f", &peso);
                         preco = frutas[fruta_choice-1].precoGerais * peso;
                         printf("Preco: %.2f reais\n", preco);
