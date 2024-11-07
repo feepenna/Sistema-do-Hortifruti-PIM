@@ -174,7 +174,7 @@ int adicionarMaisClientes() {
             {"Couve-Flor", 8.00}, //unidade
             {"Brócolis", 6.00} //unidade
         };
-        struct Produto legumes[7] = {
+        struct Produto legumes[8] = {
             {"Abóbora", 5.00},
             {"Batata Doce", 6.00},
             {"Batata", 4.50},
