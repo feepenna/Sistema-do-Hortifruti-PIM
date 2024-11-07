@@ -161,35 +161,48 @@ int adicionarMaisClientes() {
 		
 	} while(op!='5');
 
-        // Definindo os produtos
-        struct Produto vegetais[5] = {
-            {"Brocolis", 0.25},
-            {"Cenoura", 0.50},
-            {"Espinafre", 0.30},
-            {"Alface", 0.75},
-            {"Batata Doce", 0.70}
+        // Definindo os produtos 35 itens
+        struct Produto vegetais[4] = {
+            {"Alho", 10.00}, //Pacote
+            {"Cebola", 4.00},
+            {"Pimentão", 10.00},
+            {"Salsinha", 2.50}
         };
-        struct Produto verduras[3] = {
-            {"Couve", 1.70},
-            {"Acelga", 0.20},
-            {"Escarola", 2.20}
+        struct Produto verduras[4] = {
+            {"Alface", 3.00}, //unidade
+            {"Couve", 3.50}, //unidade
+            {"Couve-Flor", 8.00}, //unidade
+            {"Brócolis", 6.00} //unidade
         };
-        
-        struct Produto legumes[4] = {
-            {"Chuchu", 0.75},
-            {"Ervilha", 1.25},
-            {"Palmito", 2.00},
-            {"Quiabo", 1.75}
+        struct Produto legumes[7] = {
+            {"Abóbora", 5.00},
+            {"Batata Doce", 6.00},
+            {"Batata", 4.50},
+            {"Cenoura", 5.00},
+            {"Chuchu", 3.00},
+            {"Mandioquinha", 10.00},
+            {"Milho", 2.50},
+            {"Mandioca", 13.00}
         };
-        
-        struct Produto frutas[5] = {
-            {"Laranja", 0.35},
-            {"Uva", 0.70},     
-            {"Morango", 1.20},   
-            {"Abacaxi", 0.50},   
-            {"Banana", 0.40}    
+            struct Produto frutas[17] = {
+            {"Abacate", 8.99},
+            {"Abacaxi", 7.50}, //unidade
+            {"Ameixa", 15.00},
+            {"Banana", 4.50},
+            {"Caju", 12.00},
+            {"Laranja", 5.00},
+            {"Maçã", 8.00},
+            {"Manga", 7.00},
+            {"Maracujá", 14.00}, //unidade
+            {"Melancia", 3.50}, //unidade
+            {"Melão", 10.00},
+            {"Mexerica", 6.00},
+            {"Morango", 18.00},
+            {"Pera", 12.00},
+            {"Pêssego", 14.00},
+            {"Tomate", 9.00},
+            {"Uva", 12.00}
         };
-
         struct Produto prodgen[10] = {
             {"Refrigerante 2L", 10.00},
             {"Salgadinho", 9.90},
