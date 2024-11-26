@@ -89,7 +89,7 @@ int adicionarMaisClientes() {
 	
 	do{
 		system("cls");
-		puts("Escolha uma opção: ");
+		puts("Escolha uma opcao: ");
 		puts("1. Cadastrar clientes");
 		puts("2. Consultar dados de cliente");
 		puts("3. Alterar cadastro");
@@ -121,7 +121,7 @@ int adicionarMaisClientes() {
 				} while (i<0 || i>2);
 				leArquivo(c, 3);
 				printf("Nome: %s \nIdade: %d \n", c[i].nome, c[i].idade);
-				printf("Endereço: Rua %s, %d, %s.\n", c[i].ender.rua, c[i].ender.numero, c[i].ender.cidade);
+				printf("Endereco: Rua %s, %d, %s.\n", c[i].ender.rua, c[i].ender.numero, c[i].ender.cidade);
 				system("pause");
 				break;
 			
